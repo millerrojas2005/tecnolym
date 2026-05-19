@@ -1,0 +1,494 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 19-05-2026 a las 20:26:26
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `tecnomyl`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detalle_ventas`
+--
+
+CREATE TABLE `detalle_ventas` (
+  `id` int(11) NOT NULL,
+  `venta_id` int(11) DEFAULT NULL,
+  `producto_id` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `precio` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `detalle_ventas`
+--
+
+INSERT INTO `detalle_ventas` (`id`, `venta_id`, `producto_id`, `cantidad`, `precio`) VALUES
+(1, 1, 18, 1, 0.00),
+(2, 1, 156, 1, 0.00),
+(3, 2, 1, 1, 220000.00),
+(4, 3, 1, 1, 220000.00),
+(5, 3, 2, 1, 12000000.00);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `categoria` varchar(50) DEFAULT NULL,
+  `precio` decimal(10,2) DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `imagen` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `nombre`, `categoria`, `precio`, `stock`, `fecha`, `imagen`) VALUES
+(1, 'CARGADOR XIOAMI 120 W', 'General', 90000.00, 1, '2026-05-19 16:41:59', ''),
+(2, 'MARRANA SAMSUNG 25 W', 'General', 35000.00, 12, '2026-05-19 16:41:59', ''),
+(3, 'IP CABLE 240 W', 'General', 35000.00, 1, '2026-05-19 16:41:59', ''),
+(4, 'CABLE TIPO CA C3A 1HORA', 'General', 20000.00, 3, '2026-05-19 16:41:59', ''),
+(5, 'CARGADOR CARRO F52-500', 'General', 15000.00, 0, '2026-05-19 16:41:59', ''),
+(6, 'IP ADAPTADOR CON CABLE', 'General', 25000.00, 6, '2026-05-19 16:41:59', ''),
+(7, 'CABLE TIPO C INOVATECH', 'General', 20000.00, 2, '2026-05-19 16:41:59', ''),
+(8, 'CARGADOR CARRO 12 MAX 1HORA', 'General', 20000.00, 1, '2026-05-19 16:41:59', ''),
+(9, 'CABLE TIPO C 112 ALLITECH', 'General', 25000.00, 3, '2026-05-19 16:42:00', ''),
+(10, 'CABLE TIPO C CL-6', 'General', 20000.00, 0, '2026-05-19 16:42:00', ''),
+(11, 'CABLE CARGADOR VEX 2M', 'General', 20000.00, 1, '2026-05-19 16:42:00', ''),
+(12, 'CARGADOR COMPLETO V8 2.1 A F52', 'General', 20000.00, 22, '2026-05-19 16:42:00', ''),
+(13, 'SMARTWATCH W26 PRO MAX', 'General', 75000.00, 2, '2026-05-19 16:42:00', ''),
+(14, 'SMARTWATCH 19 ULTRA MAX', 'General', 55000.00, 1, '2026-05-19 16:42:00', ''),
+(15, 'SMARTWATCH T55 PRO MAX', 'General', 85000.00, 2, '2026-05-19 16:42:00', ''),
+(16, 'MARRANA SAMSUNG 45W', 'General', 35000.00, 4, '2026-05-19 16:42:00', ''),
+(17, 'MARRANA 5W', 'General', 20000.00, 5, '2026-05-19 16:42:00', ''),
+(18, 'ADAPTADOR INTERNACIONAL', 'General', 35000.00, 1, '2026-05-19 16:42:00', ''),
+(19, 'CARGADOR REDMI COMPLETO 67 W', 'General', 45000.00, 6, '2026-05-19 16:42:00', ''),
+(20, 'CARGADOR COMPLETO 66W', 'General', 35000.00, 2, '2026-05-19 16:42:00', ''),
+(21, 'CALCULADORA DEXIN 8188 C', 'General', 20000.00, 4, '2026-05-19 16:42:00', ''),
+(22, 'MARRANA SAMSUNG 35W', 'General', 40000.00, 5, '2026-05-19 16:42:00', ''),
+(23, 'CARGADOR COMPLETO SAMSUNG 25 W', 'General', 35000.00, 10, '2026-05-19 16:42:00', ''),
+(24, 'CARGADOR 5 EN 1 CARRO 180W TECLOP', 'General', 65000.00, 1, '2026-05-19 16:42:00', ''),
+(25, 'CARGADOR XIAOMI 33 W', 'General', 35000.00, 1, '2026-05-19 16:42:00', ''),
+(26, 'CARGADOR IP 14 PRO MAX', 'General', 45000.00, 5, '2026-05-19 16:42:00', ''),
+(27, 'CARGADOR IP 15 PRO MAX', 'General', 45000.00, 4, '2026-05-19 16:42:00', ''),
+(28, 'CARGADOR IP 16 PRO MAX', 'General', 45000.00, 16, '2026-05-19 16:42:00', ''),
+(29, 'GAME STATION 5', 'General', 65000.00, 3, '2026-05-19 16:42:00', ''),
+(30, 'MICROFONOS SUELTOS', 'General', 70000.00, 2, '2026-05-19 16:42:00', ''),
+(31, 'DIADEMA DISEÑOS INFANTIL AH-806Z', 'General', 35000.00, 1, '2026-05-19 16:42:00', ''),
+(32, 'HUMIFICADOR FT-036', 'General', 45000.00, 2, '2026-05-19 16:42:00', ''),
+(33, 'AUDIFONOS CABLE SAMSUNG AKG', 'General', 25000.00, 13, '2026-05-19 16:42:00', ''),
+(34, 'AUDIFONOS CABLE HUAWEI', 'General', 20000.00, 12, '2026-05-19 16:42:01', ''),
+(35, 'AIRPODS CABLE', 'General', 35000.00, 2, '2026-05-19 16:42:01', ''),
+(36, 'DIADEMA MDR-450 DORADO', 'General', 25000.00, 3, '2026-05-19 16:42:01', ''),
+(37, 'DIADEMA MDR-450 ROJO', 'General', 25000.00, 2, '2026-05-19 16:42:01', ''),
+(38, 'DIADEMA MDR-450 PLATEADO', 'General', 25000.00, 1, '2026-05-19 16:42:01', ''),
+(39, 'CELULARES', 'General', 0.00, 0, '2026-05-19 16:42:01', ''),
+(40, 'VIVO Y2S', 'General', 10000.00, 0, '2026-05-19 16:42:01', ''),
+(41, 'MOTO G04s XT2421-10', 'General', 10000.00, 0, '2026-05-19 16:42:01', ''),
+(42, 'MOTO E7 Plus Xt2081-1', 'General', 10000.00, 0, '2026-05-19 16:42:01', ''),
+(43, 'OPPO A80 5G CPH2639', 'General', 10000.00, 0, '2026-05-19 16:42:01', ''),
+(44, 'SAMSUNG GALAXY A03s', 'General', 10000.00, 0, '2026-05-19 16:42:01', ''),
+(45, 'LG K42', 'General', 10000.00, 0, '2026-05-19 16:42:01', ''),
+(46, 'REDMI NOTE 8', 'General', 10000.00, 0, '2026-05-19 16:42:01', ''),
+(47, 'VIDRIOS TEMPLADOS', 'General', 0.00, 0, '2026-05-19 16:42:01', ''),
+(48, 'VT. SAMSUNG A36, 56, 24', 'General', 10000.00, 5, '2026-05-19 16:42:01', ''),
+(49, 'VT. MOTOROLA G40, 69, G60', 'General', 10000.00, 9, '2026-05-19 16:42:01', ''),
+(50, 'VT. REDMI NOTE 12 4G', 'General', 10000.00, 10, '2026-05-19 16:42:01', ''),
+(51, 'VT. IP XS MAX - 11  PRO MAX', 'General', 10000.00, 9, '2026-05-19 16:42:01', ''),
+(52, 'VT. IP 11', 'General', 10000.00, 9, '2026-05-19 16:42:01', ''),
+(53, 'VT. IP XR', 'General', 10000.00, 9, '2026-05-19 16:42:01', ''),
+(54, 'VT. IP 6P/7P/8P', 'General', 10000.00, 10, '2026-05-19 16:42:01', ''),
+(55, 'VT. IP X5/ 11 PRO', 'General', 10000.00, 10, '2026-05-19 16:42:02', ''),
+(56, 'VT. IP 13/ 13 PRO/14/16E', 'General', 10000.00, 0, '2026-05-19 16:42:02', ''),
+(57, 'VT. IP 15', 'General', 10000.00, 9, '2026-05-19 16:42:02', ''),
+(58, 'VT. SAMSUNG A05/REDMI BC- POCO C65', 'General', 10000.00, 9, '2026-05-19 16:42:02', ''),
+(59, 'VT. IP 15 PRO MAX', 'General', 10000.00, 10, '2026-05-19 16:42:02', ''),
+(60, 'VT. IP 16', 'General', 10000.00, 10, '2026-05-19 16:42:02', ''),
+(61, 'VT.  IP 17 PRO', 'General', 10000.00, 10, '2026-05-19 16:42:02', ''),
+(62, 'VIDRIOS ANTI-ESPIA', 'General', 0.00, 0, '2026-05-19 16:42:02', ''),
+(63, 'VT. IP 12 PRO MAX', 'General', 10000.00, 9, '2026-05-19 16:42:02', ''),
+(64, 'VT. IP 16', 'General', 10000.00, 10, '2026-05-19 16:42:02', ''),
+(65, 'VT. IP 17 PRO MAX', 'General', 10000.00, 7, '2026-05-19 16:42:02', ''),
+(66, 'VT. IP 16', 'General', 10000.00, 10, '2026-05-19 16:42:02', ''),
+(67, 'VT. HONOR X6B', 'General', 10000.00, 11, '2026-05-19 16:42:02', ''),
+(68, 'VT. HONOR X7B', 'General', 10000.00, 19, '2026-05-19 16:42:02', ''),
+(69, 'VT. SANSUBG A07', 'General', 10000.00, 9, '2026-05-19 16:42:02', ''),
+(70, 'VT. REDMI NOTE 14 4G', 'General', 10000.00, 5, '2026-05-19 16:42:02', ''),
+(71, 'VT. SAMSUNG A51', 'General', 10000.00, 0, '2026-05-19 16:42:02', ''),
+(72, 'VT. SAMSUNG A36/56', 'General', 10000.00, 9, '2026-05-19 16:42:02', ''),
+(73, 'VT. SAMSUNG A15/F15/M15', 'General', 10000.00, 10, '2026-05-19 16:42:02', ''),
+(74, 'VT. REDMI K50', 'General', 10000.00, 3, '2026-05-19 16:42:02', ''),
+(75, 'VT. REDMI NOTE 10/10S/SS', 'General', 10000.00, 0, '2026-05-19 16:42:02', ''),
+(76, 'VT. REDMI NOTE A4/A5/14C/14 R', 'General', 10000.00, 9, '2026-05-19 16:42:02', ''),
+(77, 'VT. SAMSUNG A12', 'General', 10000.00, 9, '2026-05-19 16:42:02', ''),
+(78, 'VT. SAMSUNG A24', 'General', 10000.00, 8, '2026-05-19 16:42:02', ''),
+(79, 'VT. SAMSUNG A05', 'General', 10000.00, 17, '2026-05-19 16:42:02', ''),
+(80, 'VT. SAMSUNG A06', 'General', 10000.00, 17, '2026-05-19 16:42:02', ''),
+(81, 'VT. SAMSUNG A16', 'General', 10000.00, 9, '2026-05-19 16:42:02', ''),
+(82, 'VT. SAMSUNG A12 AG', 'General', 10000.00, 0, '2026-05-19 16:42:02', ''),
+(83, 'VT. SAMSUNG A11', 'General', 10000.00, 5, '2026-05-19 16:42:02', ''),
+(84, 'VT. A24 BLACK', 'General', 10000.00, 8, '2026-05-19 16:42:02', ''),
+(85, 'VT. SAMSUNG A21/A21S', 'General', 10000.00, 2, '2026-05-19 16:42:03', ''),
+(86, 'VT. SAMSUNG A30', 'General', 10000.00, 10, '2026-05-19 16:42:03', ''),
+(87, 'VT. SAMSUNG A34', 'General', 10000.00, 8, '2026-05-19 16:42:03', ''),
+(88, 'VT. A35 BACK', 'General', 10000.00, 10, '2026-05-19 16:42:03', ''),
+(89, 'VT. SAMSUNG A70, A70S', 'General', 10000.00, 10, '2026-05-19 16:42:03', ''),
+(90, 'SOPORTE PARA CELULAR CARRO', 'General', 35000.00, 2, '2026-05-19 16:42:03', ''),
+(91, 'SOPORTE CELULAR/CAMARA CASCO', 'General', 35000.00, 1, '2026-05-19 16:42:03', ''),
+(92, 'SOPORTE  CELULAR MOTO', 'General', 35000.00, 1, '2026-05-19 16:42:03', ''),
+(93, 'INTERCOMUNICADOR PANTALLA LED', 'General', 90000.00, 1, '2026-05-19 16:42:03', ''),
+(94, 'PESA DE COCINA', 'General', 75000.00, 1, '2026-05-19 16:42:03', ''),
+(95, 'VIDRIOS CURVOS ANTI POLVO', 'General', 0.00, 0, '2026-05-19 16:42:03', ''),
+(96, 'SAMSUNG A05', 'General', 20000.00, 25, '2026-05-19 16:42:03', ''),
+(97, 'SAMSUNG A16', 'General', 20000.00, 0, '2026-05-19 16:42:03', ''),
+(98, 'SAMSUNG A21S', 'General', 20000.00, 9, '2026-05-19 16:42:03', ''),
+(99, 'SAMSUNG A35', 'General', 20000.00, 7, '2026-05-19 16:42:03', ''),
+(100, 'SAMSUNG A70', 'General', 20000.00, 9, '2026-05-19 16:42:03', ''),
+(101, 'IP 14 PRO MAX', 'General', 20000.00, 7, '2026-05-19 16:42:03', ''),
+(102, 'IP 15/16', 'General', 20000.00, 15, '2026-05-19 16:42:03', ''),
+(103, 'IP 13/ 13 PRO', 'General', 20000.00, 0, '2026-05-19 16:42:03', ''),
+(104, 'IP 13 PRO MAX', 'General', 20000.00, 0, '2026-05-19 16:42:03', ''),
+(105, 'IP 16/PRO/17', 'General', 20000.00, 10, '2026-05-19 16:42:03', ''),
+(106, 'IP 16 PRO MAX', 'General', 20000.00, 10, '2026-05-19 16:42:03', ''),
+(107, 'IP 17 PRO', 'General', 20000.00, 10, '2026-05-19 16:42:03', ''),
+(108, 'IP 17 PRO MAX', 'General', 20000.00, 10, '2026-05-19 16:42:03', ''),
+(109, 'IP 17 AIR', 'General', 20000.00, 10, '2026-05-19 16:42:03', ''),
+(110, 'SAMSUNG A71', 'General', 20000.00, 9, '2026-05-19 16:42:03', ''),
+(111, 'HONOR X7B', 'General', 20000.00, 20, '2026-05-19 16:42:04', ''),
+(112, 'HONOR X8A', 'General', 20000.00, 10, '2026-05-19 16:42:04', ''),
+(113, 'SAMSUNG A51', 'General', 20000.00, 17, '2026-05-19 16:42:04', ''),
+(114, 'REDMI NOTE 13', 'General', 20000.00, 17, '2026-05-19 16:42:04', ''),
+(115, 'RW 14C', 'General', 20000.00, 9, '2026-05-19 16:42:04', ''),
+(116, 'IP XR', 'General', 20000.00, 9, '2026-05-19 16:42:04', ''),
+(117, 'PROYECTOR HD', 'General', 150000.00, 1, '2026-05-19 16:42:04', ''),
+(118, 'PROYECTOR HD NEGRO', 'General', 220000.00, 1, '2026-05-19 16:42:04', ''),
+(119, 'BAFLE JBL A310 PRO', 'General', 120000.00, 1, '2026-05-19 16:42:04', ''),
+(120, 'BAFLE JBL A300 PRO', 'General', 95000.00, 1, '2026-05-19 16:42:04', ''),
+(121, 'BAFLE JBL B5-30', 'General', 75000.00, 1, '2026-05-19 16:42:04', ''),
+(122, 'BAFLE MS-3619BT', 'General', 35000.00, 2, '2026-05-19 16:42:04', ''),
+(123, 'CAMARA DE SEGURIDAD V380 DOS CAMARAS', 'General', 150000.00, 1, '2026-05-19 16:42:04', ''),
+(124, 'GAME T.V STICK', 'General', 90000.00, 1, '2026-05-19 16:42:04', ''),
+(125, 'MOUSE CABLE SKINY', 'General', 15000.00, 1, '2026-05-19 16:42:04', ''),
+(126, 'HIDROLAVADORA', 'General', 70000.00, 1, '2026-05-19 16:42:04', ''),
+(127, 'CONTROL XBOX 360', 'General', 140000.00, 1, '2026-05-19 16:42:04', ''),
+(128, 'CABLE MELLO TIPO C', 'General', 25000.00, 0, '2026-05-19 16:42:04', ''),
+(129, 'CABLE SAMSUNG TC TC', 'General', 25000.00, 0, '2026-05-19 16:42:04', ''),
+(130, 'MARRANA 25 W NUEVA', 'General', 35000.00, 1, '2026-05-19 16:42:04', ''),
+(131, 'MARRANA 45W NUEVA', 'General', 45000.00, 0, '2026-05-19 16:42:04', ''),
+(132, 'MARRANA SAMSUNG 35W', 'General', 45000.00, 0, '2026-05-19 16:42:04', ''),
+(133, 'MARRANA IP 25W COLORES', 'General', 35000.00, 1, '2026-05-19 16:42:04', ''),
+(134, 'MARRANA IP 35 W', 'General', 35000.00, 2, '2026-05-19 16:42:04', ''),
+(135, 'CARGADOR SAMSUNG 35 W', 'General', 45000.00, 1, '2026-05-19 16:42:04', ''),
+(136, 'CARGADOR SAMSUNG 67 W TC', 'General', 45000.00, 2, '2026-05-19 16:42:04', ''),
+(137, 'CARGADOR SAMSUNG 67 W TC TC', 'General', 45000.00, 2, '2026-05-19 16:42:04', ''),
+(138, 'CARGADOR SAMSUNG S20 TIPO 20', 'General', 25000.00, 2, '2026-05-19 16:42:04', ''),
+(139, 'CARGADOR SAMSUNG 120 W', 'General', 85000.00, 1, '2026-05-19 16:42:04', ''),
+(140, 'CARGADOR XIAOMI 20 W V8', 'General', 35000.00, 1, '2026-05-19 16:42:04', ''),
+(141, 'CARGADOR XIAOMI 67 W TC', 'General', 45000.00, 2, '2026-05-19 16:42:05', ''),
+(142, 'CARGADOR XIAOMI 67W TC TC', 'General', 45000.00, 2, '2026-05-19 16:42:05', ''),
+(143, 'CARGADOR MOTOROLA 38W TC TC', 'General', 35000.00, 2, '2026-05-19 16:42:05', ''),
+(144, 'CARGADOR MOTOROLA 67W TC', 'General', 45000.00, 2, '2026-05-19 16:42:05', ''),
+(145, 'CARGADOR MOTOROLA 67 WC TC TC', 'General', 45000.00, 2, '2026-05-19 16:42:05', ''),
+(146, 'CARGADOR IPHONE 25 W', 'General', 35000.00, 0, '2026-05-19 16:42:05', ''),
+(147, 'MANOS LIBRES 5830 SAMSUNG ORIGINAL', 'General', 25000.00, 0, '2026-05-19 16:42:05', ''),
+(148, 'MANOS LIBRES SAMSUNG TC', 'General', 25000.00, 7, '2026-05-19 16:42:05', ''),
+(149, 'FORRO CELULAR ANTI AGUA', 'General', 10000.00, 1, '2026-05-19 16:42:05', ''),
+(150, 'CABLE HDTV', 'General', 15000.00, 1, '2026-05-19 16:42:05', ''),
+(151, 'MEMORIA KINGSTON 8GB', 'General', 25000.00, 0, '2026-05-19 16:42:05', ''),
+(152, 'MEMORIA KINGSTON 16 GB', 'General', 35000.00, 0, '2026-05-19 16:42:05', ''),
+(153, 'MEMORIA KINGSTON 32 GB', 'General', 40000.00, 0, '2026-05-19 16:42:05', ''),
+(154, 'MEMORIA KINGSTON 64 GB', 'General', 50000.00, 0, '2026-05-19 16:42:05', ''),
+(155, 'CARGADOR COMPLETO V8', 'General', 10000.00, 1, '2026-05-19 16:42:05', ''),
+(156, 'ADAPTADOR SIM CARD', 'General', 2000.00, 5, '2026-05-19 16:42:05', ''),
+(157, 'LLAVEROS', 'General', 5000.00, 13, '2026-05-19 16:42:05', ''),
+(158, 'MEMORIAS CON MUSICA', 'General', 10000.00, 0, '2026-05-19 16:42:05', ''),
+(159, 'PAQUETE CABLES AV DVD', 'General', 15000.00, 0, '2026-05-19 16:42:05', ''),
+(160, 'CABLE SUELTO USB A TC', 'General', 10000.00, 13, '2026-05-19 16:42:05', ''),
+(161, 'CABLE SUELTO USB A V8', 'General', 10000.00, 3, '2026-05-19 16:42:05', ''),
+(162, 'CARGADOR CARGA RAPIDA  CG-01', 'General', 15000.00, 3, '2026-05-19 16:42:05', ''),
+(163, 'SMARTWATCH T800 ULTRA', 'General', 75000.00, 2, '2026-05-19 16:42:05', ''),
+(164, 'PROYECTOR HD CON CONTROLES', 'General', 220000.00, 1, '2026-05-19 16:42:05', ''),
+(165, 'WATCH ONN', 'General', 120000.00, 1, '2026-05-19 16:42:05', ''),
+(166, 'WANTCH ONN PLUS', 'General', 130000.00, 0, '2026-05-19 16:42:05', ''),
+(167, 'T.V STICK', 'General', 70000.00, 2, '2026-05-19 16:42:05', ''),
+(168, 'T.V STICK AMAZON', 'General', 130000.00, 1, '2026-05-19 16:42:05', ''),
+(169, 'MINI TECLADO INALAMBRICO', 'General', 35000.00, 1, '2026-05-19 16:42:05', ''),
+(170, 'PSP M17', 'General', 180000.00, 1, '2026-05-19 16:42:06', ''),
+(171, 'GAME STICK 8K', 'General', 170000.00, 1, '2026-05-19 16:42:06', ''),
+(172, 'TDT', 'General', 65000.00, 1, '2026-05-19 16:42:06', ''),
+(173, 'RADIO  AUDIFONOS INALAMBRICOS', 'General', 80000.00, 4, '2026-05-19 16:42:06', ''),
+(174, 'AUDIFONOS INALAMBRICOS  M100', 'General', 35000.00, 0, '2026-05-19 16:42:06', ''),
+(175, 'AUDIFONOS INALAMBRICOS TWS-IC9', 'General', 40000.00, 0, '2026-05-19 16:42:06', ''),
+(176, 'AUDIFONOS INALAMBRICOS MICKEY', 'General', 25000.00, 13, '2026-05-19 16:42:06', ''),
+(177, 'AUDIFONOS INALAMBRICOS GAMER', 'General', 35000.00, 0, '2026-05-19 16:42:06', ''),
+(178, 'RELOJ CON DIEZ CORREAS DE CAMBIO S30 PRO MAX', 'General', 120000.00, 0, '2026-05-19 16:42:06', ''),
+(179, 'CAJA CON DIADEMA+RELOJ+AUDIFONOS INALAMBRICOS TECLOP', 'General', 160000.00, 1, '2026-05-19 16:42:06', ''),
+(180, 'DIADEMA INALAMBRICA SPORT CZU', 'General', 110000.00, 1, '2026-05-19 16:42:06', ''),
+(181, 'CAMARA DE SEGURIDAD V380 4 CAMARAS', 'General', 220000.00, 1, '2026-05-19 16:42:06', ''),
+(182, 'CAMARA INTELIGENTE A9', 'General', 25000.00, 1, '2026-05-19 16:42:06', ''),
+(183, 'CAMARA FOCO V380', 'General', 55000.00, 1, '2026-05-19 16:42:06', ''),
+(184, 'P', 'General', 25000.00, 1, '2026-05-19 16:42:06', ''),
+(185, 'GAME STICK 4K', 'General', 85000.00, 0, '2026-05-19 16:42:06', ''),
+(186, 'MICROFONO INALAMBRICO SOLAPA K9', 'General', 40000.00, 2, '2026-05-19 16:42:06', ''),
+(187, 'MICROFONO INALAMBRICO PANTALLA', 'General', 55000.00, 0, '2026-05-19 16:42:06', ''),
+(188, 'MICROFONO INALAMBRICO F11', 'General', 60000.00, 2, '2026-05-19 16:42:06', ''),
+(189, 'POWERBANK AC17 ALLITECH 10,000 mAh', 'General', 80000.00, 1, '2026-05-19 16:42:06', ''),
+(190, 'BATERIA PORTATIL 1HORA 10,5W', 'General', 55000.00, 0, '2026-05-19 16:42:06', ''),
+(191, 'BATERIA PORTATIL 1HORA 22.5 W', 'General', 90000.00, 0, '2026-05-19 16:42:06', ''),
+(192, 'BATERIA PORTATIL 1HORA 10.5 W 20.000 mAh', 'General', 120000.00, 0, '2026-05-19 16:42:06', ''),
+(193, 'CORREA SMARTWATCH LOOPMAX', 'General', 20000.00, 0, '2026-05-19 16:42:06', ''),
+(194, 'SIM TIGO', 'General', 3000.00, 0, '2026-05-19 16:42:06', ''),
+(195, 'SIM CLARO', 'General', 3000.00, 48, '2026-05-19 16:42:06', ''),
+(196, 'MOVISTAR', 'General', 3000.00, 0, '2026-05-19 16:42:06', ''),
+(197, 'BAFLE BJ-29', 'General', 85000.00, 0, '2026-05-19 16:42:07', ''),
+(198, 'BAFLE CON MICROFONO DIGITAL CM1K', 'General', 60000.00, 0, '2026-05-19 16:42:07', ''),
+(199, 'BAFLE P63', 'General', 60000.00, 1, '2026-05-19 16:42:07', ''),
+(200, 'BAFLE MJ 2209 BT', 'General', 30000.00, 0, '2026-05-19 16:42:07', ''),
+(201, 'BAFLE MJ-2228BT', 'General', 35000.00, 0, '2026-05-19 16:42:07', ''),
+(202, 'BAFLE MJ-2218BT', 'General', 30000.00, 0, '2026-05-19 16:42:07', ''),
+(203, 'BAFLE KARAOKE', 'General', 75000.00, 2, '2026-05-19 16:42:07', ''),
+(204, 'BAFLE CON MICROFONO BT-8105', 'General', 110000.00, 1, '2026-05-19 16:42:07', ''),
+(205, 'BAFLE CON MICROFONO YE-081', 'General', 110000.00, 1, '2026-05-19 16:42:07', ''),
+(206, 'GAFAS PLASTICAS', 'General', 12000.00, 10, '2026-05-19 16:42:07', ''),
+(207, 'BOMBILLO DE COLOR KAP-L2', 'General', 25000.00, 0, '2026-05-19 16:42:07', ''),
+(208, 'BOMBILLO DE LUCES BALON', 'General', 70000.00, 3, '2026-05-19 16:42:07', ''),
+(209, 'TECLADO K15', 'General', 35000.00, 1, '2026-05-19 16:42:07', ''),
+(210, 'BAFLE JBL B42', 'General', 85000.00, 0, '2026-05-19 16:42:07', ''),
+(211, 'BAFLE JBL B43', 'General', 90000.00, 0, '2026-05-19 16:42:07', ''),
+(212, 'BAFLE JBL IPX6', 'General', 130000.00, 1, '2026-05-19 16:42:07', ''),
+(213, 'BAFLE JBL BJ-07', 'General', 45000.00, 0, '2026-05-19 16:42:07', ''),
+(214, 'BAFLE JBL CLIP S', 'General', 75000.00, 0, '2026-05-19 16:42:07', ''),
+(215, 'BAFLE NX-Y103', 'General', 55000.00, 1, '2026-05-19 16:42:07', ''),
+(216, 'BAFLE F52-060', 'General', 120000.00, 1, '2026-05-19 16:42:07', ''),
+(217, 'BAFLE L43', 'General', 75000.00, 0, '2026-05-19 16:42:07', ''),
+(218, 'BAFLE JBL FLIP7', 'General', 165000.00, 1, '2026-05-19 16:42:07', ''),
+(220, 'AUDIFONO INALAMBRICO CASCO BT-12', 'General', 65000.00, 1, '2026-05-19 16:42:07', ''),
+(221, 'MINI PALO DE SELFIE TECLOP', 'General', 85000.00, 0, '2026-05-19 16:42:07', ''),
+(222, 'AUDIFONOS INALAMBRICOS 1HORA', 'General', 85000.00, 0, '2026-05-19 16:42:07', ''),
+(223, 'DIADEMA DISEÑOS INFANTIL AH-906D', 'General', 35000.00, 1, '2026-05-19 16:42:07', ''),
+(224, 'DIADEMA DISEÑOS INFANTIL MSL-825', 'General', 65000.00, 3, '2026-05-19 16:42:08', ''),
+(225, 'DIADEMA DISEÑOS INFANTIL AH-806Z1', 'General', 35000.00, 1, '2026-05-19 16:42:08', ''),
+(226, 'DIADEMA DISEÑOS INFANTIL NM-34', 'General', 35000.00, 1, '2026-05-19 16:42:08', ''),
+(227, 'DIADEMA DISEÑOS INFANTIL KT-48', 'General', 40000.00, 2, '2026-05-19 16:42:08', ''),
+(228, 'DIADEMA DISEÑOS INFANTIL AH-807V', 'General', 35000.00, 1, '2026-05-19 16:42:08', ''),
+(229, 'DIADEMA DISEÑOS INFANTIL MSL-829', 'General', 65000.00, 2, '2026-05-19 16:42:08', ''),
+(230, 'VIDRIO TEMPLADO CON HUELLA', 'General', 0.00, 0, '2026-05-19 16:42:08', ''),
+(231, 'SAMSUNG S24 ULTRA/S25', 'General', 30000.00, 9, '2026-05-19 16:42:08', ''),
+(232, 'MINI HUMIFICADOR', 'General', 20000.00, 2, '2026-05-19 16:42:08', ''),
+(233, 'HUMIFICADOR LUZ ATRADECER', 'General', 55000.00, 2, '2026-05-19 16:42:08', ''),
+(234, 'BAFLE YE-1208', 'General', 220000.00, 1, '2026-05-19 16:42:08', ''),
+(235, 'CABLES V8 TRANYOO', 'General', 15000.00, 0, '2026-05-19 16:42:08', ''),
+(236, 'CABLES TC TRANYOO', 'General', 15000.00, 0, '2026-05-19 16:42:08', ''),
+(237, 'AUDIFONOS CABLE PLUG', 'General', 15000.00, 0, '2026-05-19 16:42:08', ''),
+(238, 'MARRANA HUAWEI', 'General', 20000.00, 0, '2026-05-19 16:42:08', ''),
+(239, 'MARRANA TRANYOO', 'General', 20000.00, 0, '2026-05-19 16:42:08', ''),
+(240, 'TELEFONO M1702 3G', 'General', 150000.00, 1, '2026-05-19 16:42:08', ''),
+(241, 'TELEFONO FY-100', 'General', 130000.00, 1, '2026-05-19 16:42:08', ''),
+(242, 'TELEFONO FY-200', 'General', 120000.00, 0, '2026-05-19 16:42:08', ''),
+(243, 'FORROS DE CELULAR', 'General', 0.00, 0, '2026-05-19 16:42:08', ''),
+(244, 'POCO X7 PRO SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:08', ''),
+(245, 'HONOR X9A SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:08', ''),
+(246, 'VIVO Y22S SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:08', ''),
+(247, 'RENO 5 LITE SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:08', ''),
+(248, 'RENO 6 LITE SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:08', ''),
+(249, 'VIVO Y33S/Y21S/Y21 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:08', ''),
+(250, 'UNIVERSAL SILICONA', 'General', 12000.00, 12, '2026-05-19 16:42:09', ''),
+(251, 'S8 PLUS', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(252, 'J1 PRIME SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(253, 'REDMI 9 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(254, 'IP 15 PLUS SILICONA', 'General', 12000.00, 3, '2026-05-19 16:42:09', ''),
+(255, 'RENO 5 LITE SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:09', ''),
+(256, 'REDMI NOTE 12 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(257, 'REDMI NOTE 13 PRO+5 G SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(258, 'REDMI NOTE 13 PRO 4 G', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(259, 'VIV Y33S/Y21S/Y21 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(260, 'REALME C15 SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:09', ''),
+(261, 'REDMI 13 C 4G', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(262, 'REDMI NOTE 13 4 G', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(263, 'REDMI NOTE 12 S SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(264, 'XIAMOI NOTE 9T SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:09', ''),
+(265, 'REDMI NOTE 9', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(266, 'REDMI 9A SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(267, 'REDMI 9C SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(268, 'REDMI NOTE 12S SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:09', ''),
+(269, 'REDMI NOTE 11 F4G/11S', 'General', 12000.00, 2, '2026-05-19 16:42:09', ''),
+(270, 'IP 16 PRO DE LUJO', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(271, 'IP 16 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(272, 'MOTO G SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(273, 'SAMSUNG J2 PRIME', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(274, 'NOTE 5 PRO', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(275, 'HONOR X7 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(276, 'HONOR X7 B SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(277, 'HONOR 200PRO SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:09', ''),
+(278, 'HONOR X8 B SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:09', ''),
+(279, 'MOTOROLA G22 SILICONA', 'General', 12000.00, 4, '2026-05-19 16:42:10', ''),
+(280, 'SAMSUNG A15 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(281, 'MOTOROLA G51 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(282, 'MOTOROLA EDGE 60 FUSION SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(283, 'HONOR 200  SILICONA', 'General', 12000.00, 3, '2026-05-19 16:42:10', ''),
+(284, 'MOTOROLA G 84 5G', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(285, 'MOTOROLA G60 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(286, 'SAMSUNG A26 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(287, 'SAMSUNG A42 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(288, 'SAMSUNG A11 4G/5G', 'General', 12000.00, 5, '2026-05-19 16:42:10', ''),
+(289, 'SAMSUNG A53 5G', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(290, 'SAMSUNG A23 4G', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(291, 'SAMSUNG A50 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(292, 'SAMSUNG S22 ULTRA', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(293, 'SAMSUNG A42 SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:10', ''),
+(294, 'ASMSUNG A52 SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:10', ''),
+(295, 'SAMSUNG A51 SILICONA', 'General', 12000.00, 4, '2026-05-19 16:42:10', ''),
+(296, 'SAMSUNG S23 ULTRA SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:10', ''),
+(297, 'SAMSUNG S24 ULTRA SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:10', ''),
+(298, 'SAMSUBG A16 SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:10', ''),
+(299, 'SAMSUNG A16 5G', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(300, 'SAMSUNG A06 SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:10', ''),
+(301, 'IP 6 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(302, 'IP 11 PRO SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:10', ''),
+(303, 'IP 11 PRO MAX TRANSPARENTE', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(304, 'IP 14 ARMADURA', 'General', 12000.00, 2, '2026-05-19 16:42:10', ''),
+(305, 'IP 14 SILICONA', 'General', 12000.00, 5, '2026-05-19 16:42:10', ''),
+(306, 'IP 14 PRO MAX TRANSPARENTE', 'General', 12000.00, 1, '2026-05-19 16:42:10', ''),
+(307, 'IP 14 PRO MAX SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:11', ''),
+(308, 'IP 13 SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:11', ''),
+(309, 'IP 13 PRO SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:11', ''),
+(310, 'IP 12 PRO MAX SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(311, 'IP 12-12 PRO SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:11', ''),
+(312, 'IP 12/12 PRO MAX TRANSPARENTE', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(313, 'IP 12 PRO MAX TRANSPARENTE', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(314, 'IP 12 PRO MAX PREMIUM', 'General', 12000.00, 2, '2026-05-19 16:42:11', ''),
+(315, 'IP 15 TRANSPARENTE', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(316, 'IP 15 PRO MAX SILICONA', 'General', 12000.00, 4, '2026-05-19 16:42:11', ''),
+(317, 'IP 15 PRO MAX TRANSPARENTE', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(318, 'IP 15 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(319, 'IP 4-5-6-7-8-9-10-11', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(320, 'HUAWEI MATE 10 LITE', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(321, 'IP 13 PRO MAX SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(322, 'SAMSUNG J1 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(323, 'IP 7 PLUS SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:11', ''),
+(324, 'IP 6 PLUS SILICONA', 'General', 12000.00, 3, '2026-05-19 16:42:11', ''),
+(325, 'SAMSUNG S8 PLUS SILICONA', 'General', 12000.00, 2, '2026-05-19 16:42:11', ''),
+(326, 'SAMSUNG A7 SILICONA', 'General', 12000.00, 1, '2026-05-19 16:42:11', ''),
+(327, 'SAMSUNG J1 MINI PLASTICO', 'General', 12000.00, 6, '2026-05-19 16:42:11', ''),
+(328, 'HUAWEI P10 LITE PLASTICO', 'General', 12000.00, 2, '2026-05-19 16:42:12', ''),
+(329, 'REDMI NOTE 6A PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(330, 'LG K40 PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(331, 'HUAWEI MATE 20 PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(332, 'HUIAWEI Y9 2018 PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(333, 'SAMSUNG S20 ULTRA PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(334, 'IP 16  PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(335, 'AVVIO PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(336, 'HUAWEI Y5 PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(337, 'SAMSUNG A12 PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(338, 'MOTO G1 PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(339, 'HUAWEI Y6P PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(340, 'MOTO Z PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(341, 'J1 SILICONA PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(342, 'MOTO HIPER PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(343, 'MOTO E7 PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(344, 'HUAWEI P30 LITE PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(345, 'IP 16 PLUS  PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(346, 'HUAWEI P40 LITE PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(347, 'HUAWEI P9 LITE PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(348, 'MOTO E PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(349, 'REDMI 13 PRO PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(350, 'REDMI 13C PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:12', ''),
+(351, 'AVVIO PLASTICO', 'General', 12000.00, 2, '2026-05-19 16:42:13', ''),
+(352, 'SAMSUNG A50S PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:13', ''),
+(353, 'HUAWEI P9 PLUS PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:13', ''),
+(354, 'REDMI NOTE 9 PLASTICO', 'General', 12000.00, 1, '2026-05-19 16:42:13', ''),
+(355, 'TECLADOS', 'General', 0.00, 0, '2026-05-19 16:42:13', ''),
+(356, 'TECLADO INALAMBRICO', 'General', 70000.00, 1, '2026-05-19 16:42:13', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `id` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `total` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id`, `fecha`, `total`) VALUES
+(1, '2026-05-19 15:55:23', 0.00),
+(2, '2026-05-19 16:06:15', 220000.00),
+(3, '2026-05-19 16:10:27', 12220000.00);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `detalle_ventas`
+--
+ALTER TABLE `detalle_ventas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_ventas`
+--
+ALTER TABLE `detalle_ventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=357;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

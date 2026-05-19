@@ -1,0 +1,91 @@
+body{
+    background: #0f172a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* NAVBAR */
+
+.navbar{
+    background: #111827;
+}
+
+/* TITULOS */
+
+h1,h2,h3,h5{
+    font-weight: bold;
+}
+
+/* CARDS */
+
+.card-dashboard{
+    background: #1e293b;
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* TABLA */
+
+.table{
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table thead{
+    background: #2563eb;
+}
+
+.table tbody tr{
+    vertical-align: middle;
+}
+
+/* IMAGEN PRODUCTO */
+
+.img-cell{
+    width: 70px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.product-img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    margin: auto;
+}
+
+/* CELDAS */
+
+
+td{
+    vertical-align: middle;
+}
+
+/* BOTONES */
+
+.btn{
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* CONTENEDOR */
+
+.main-container{
+    margin-top: 30px;
+}
+.dropdown-menu{
+    z-index: 2000 !important;
+}
+
+.table-responsive{
+    position: relative;
+    z-index: 1;
+}
+
+.card-dashboard{
+    position: relative;
+}
